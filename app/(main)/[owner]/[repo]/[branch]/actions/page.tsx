@@ -4,7 +4,7 @@ import { ActionsPage } from "@/components/actions/actions-page";
 import { DocumentTitle, formatRepoBranchTitle } from "@/components/document-title";
 import { useConfig } from "@/contexts/config-context";
 import { useUser } from "@/contexts/user-context";
-import { hasGithubIdentity } from "@/lib/authz-shared";
+import { canAdminister } from "@/lib/authz-shared";
 import { Empty, EmptyDescription, EmptyHeader, EmptyTitle } from "@/components/ui/empty";
 import { getRootActions, getSchemaActions } from "@/lib/actions";
 
@@ -14,12 +14,12 @@ export default function Page() {
 
   if (!config) throw new Error("Configuration not found.");
 
-  if (!hasGithubIdentity(user)) {
+  if (!canAdminister(user)) {
     return (
       <Empty className="absolute inset-0 border-0 rounded-none">
         <EmptyHeader>
           <EmptyTitle>Access denied</EmptyTitle>
-          <EmptyDescription>Only GitHub users can view action history.</EmptyDescription>
+          <EmptyDescription>This area is managed by the site owner.</EmptyDescription>
         </EmptyHeader>
       </Empty>
     );

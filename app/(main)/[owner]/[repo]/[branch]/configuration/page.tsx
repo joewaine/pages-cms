@@ -8,7 +8,7 @@ import {
 } from "@/components/document-title";
 import { useConfig } from "@/contexts/config-context";
 import { useUser } from "@/contexts/user-context";
-import { hasGithubIdentity } from "@/lib/authz-shared";
+import { canAdminister } from "@/lib/authz-shared";
 import { Button } from "@/components/ui/button";
 import {
   Empty,
@@ -31,13 +31,13 @@ export default function Page() {
     setConfig(data.config);
   };
 
-  if (!hasGithubIdentity(user)) {
+  if (!canAdminister(user)) {
     return (
       <Empty className="absolute inset-0 border-0 rounded-none">
         <EmptyHeader>
           <EmptyTitle>Access denied</EmptyTitle>
           <EmptyDescription>
-            Only GitHub users can manage repository configuration.
+            This area is managed by the site owner.
           </EmptyDescription>
         </EmptyHeader>
       </Empty>
