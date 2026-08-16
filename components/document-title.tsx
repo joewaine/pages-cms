@@ -2,7 +2,8 @@
 
 import { useEffect } from "react";
 
-const APP_TITLE = "Pages CMS";
+import { BRAND } from "@/lib/brand";
+const APP_TITLE = BRAND.name;
 
 export const formatDocumentTitle = (title?: string | null) =>
   title ? `${title} | ${APP_TITLE}` : APP_TITLE;
