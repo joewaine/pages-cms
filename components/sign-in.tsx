@@ -176,7 +176,9 @@ export function SignIn() {
                 Sign in to edit your site
               </h1>
               <p className="text-sm text-muted-foreground">
-                Enter the email {BRAND.owner} set up for you and we&apos;ll send a 6-digit code.
+                Enter the email{" "}
+                {BRAND.owner}{" "}
+                set you up with and we&apos;ll send a 6-digit code.
               </p>
             </div>
             <form
