@@ -18,6 +18,7 @@ import { isCacheEnabled, isConfigEnabled } from "@/lib/config";
 import { getRootActions } from "@/lib/actions";
 import { getVisits } from "@/lib/tracker";
 import { RepoActionButtons } from "@/components/repo/repo-action-buttons";
+import { ViewSiteButton } from "@/components/repo/view-site-button";
 import { RepoBranches } from "@/components/repo/repo-branches";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { User } from "@/components/user";
@@ -602,6 +603,12 @@ export function RepoSidebar() {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
+        {/* The client's own site, one click away from every screen. */}
+        <SidebarGroup className="pb-0">
+          <SidebarGroupContent>
+            <ViewSiteButton />
+          </SidebarGroupContent>
+        </SidebarGroup>
         {groups.map((group, index) => (
           <Fragment key={index}>{group}</Fragment>
         ))}
